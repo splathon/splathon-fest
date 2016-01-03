@@ -1,0 +1,6 @@
+db:
+  name: splathon_fest
+  host: localhost
+  port: 3306
+  username: user
+  password: pass
