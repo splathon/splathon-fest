@@ -13,6 +13,10 @@ class FestsController < ApplicationController
     end
   end
 
+  def show
+    @fest = Fest.find(params[:id])
+  end
+
   private
 
   def fest_params

@@ -25,4 +25,19 @@ RSpec.describe FestsController do
       end
     end
   end
+
+  describe 'GET #show' do
+    let!(:fest) { FG.create(:fest) }
+    it 'returns http success' do
+      get :show, id: fest.id
+      expect(response).to have_http_status(:success)
+      expect(assigns(:fest)).to eq fest
+    end
+
+    describe 'when id invalid' do
+      it 'raise RecordNotFound' do
+        expect { get :show, id: -9999 }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end
