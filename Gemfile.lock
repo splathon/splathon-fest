@@ -206,6 +206,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.0.beta1)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (0.0.2)
+      rails (>= 4.2.0.beta)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -292,6 +294,7 @@ DEPENDENCIES
   pry-stack_explorer!
   puma!
   rails (>= 5.0.0.beta1, < 5.1)!
+  rails-controller-testing!
   rspec-core!
   rspec-expectations!
   rspec-mocks!

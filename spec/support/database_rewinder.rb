@@ -1,10 +1,7 @@
 RSpec.configure do |config|
   config.before(:suite) do
-    DatabaseRewinder.clean_with(
-      :truncation,
-      except:
-        %w(),
-    )
+    DatabaseRewinder.strategy = :truncation, { except: %w() }
+    DatabaseRewinder.clean_all
   end
 
   config.after(:each) do
