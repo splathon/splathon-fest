@@ -26,6 +26,7 @@ source 'https://rubygems.org' do
     gem 'database_rewinder'
     gem 'factory_girl_rails', group: :development
     gem 'ffaker',             group: :development
+    gem 'rails-controller-testing'
     gem 'rspec-core', github: 'rspec/rspec-core', branch: 'master'
     gem 'rspec-expectations', github: 'rspec/rspec-expectations', branch: 'master'
     gem 'rspec-mocks', github: 'rspec/rspec-mocks', branch: 'master'

@@ -4,3 +4,12 @@ p Find me in app/views/fests/index.html.slim
 ul
   - @fests.each do |fest|
     li= fest
+
+- @fest ||= Fest.new
+- unless @fest.errors.empty?
+  ul
+    - @fest.errors.full_messages.each do |e|
+      li= e
+= form_for @fest do |f|
+  = f.text_field :name
+  = f.submit
