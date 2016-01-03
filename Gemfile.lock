@@ -129,6 +129,7 @@ GEM
     config (1.0.0)
       activesupport (>= 3.0)
       deep_merge (~> 1.0.0)
+    database_rewinder (0.5.3)
     debug_inspector (0.0.2)
     deep_merge (1.0.1)
     diff-lcs (1.2.5)
@@ -139,9 +140,15 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faye-websocket (0.10.2)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
+    ffaker (2.1.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hiredis (0.5.2)
@@ -274,6 +281,9 @@ DEPENDENCIES
   byebug!
   coffee-rails (~> 4.1.0)!
   config!
+  database_rewinder!
+  factory_girl_rails!
+  ffaker!
   jbuilder (~> 2.0)!
   jquery-rails!
   mysql2 (>= 0.3.18, < 0.5)!
