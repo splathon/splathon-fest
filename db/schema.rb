@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160103084905) do
+ActiveRecord::Schema.define(version: 20160105074304) do
 
   create_table "fests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name",       null: false
@@ -19,4 +19,14 @@ ActiveRecord::Schema.define(version: 20160103084905) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer  "fest_id",               null: false
+    t.string   "alpha",      limit: 32, null: false
+    t.string   "bravo",      limit: 32, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["fest_id"], name: "index_themes_on_fest_id", using: :btree
+  end
+
+  add_foreign_key "themes", "fests"
 end
