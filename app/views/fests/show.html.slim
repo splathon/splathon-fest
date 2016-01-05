@@ -7,4 +7,11 @@ ul
   - @fest.themes.each do |theme|
     li= theme
 
+- @theme ||= Theme.new(fest: @fest)
+= form_for @theme, url: fest_themes_path(@fest) do |f|
+  = f.text_field :alpha
+  vs
+  = f.text_field :bravo
+  = f.submit
+
 p= link_to 'フェス一覧へ', fests_path
