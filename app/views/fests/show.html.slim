@@ -3,4 +3,8 @@ p Find me in app/views/fests/show.html.slim
 
 h2= @fest
 
+ul
+  - @fest.themes.each do |theme|
+    li= theme
+
 p= link_to 'フェス一覧へ', fests_path
