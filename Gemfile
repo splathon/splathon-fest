@@ -3,6 +3,7 @@ ruby '2.3.0'
 source 'https://rubygems.org' do
   gem 'coffee-rails', '~> 4.1.0'
   gem 'config'
+  gem 'enum_help'
   gem 'jbuilder', '~> 2.0'
   gem 'jquery-rails'
   gem 'mysql2', '>= 0.3.18', '< 0.5'
