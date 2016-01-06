@@ -23,11 +23,7 @@ RSpec.describe ThemesController do
 
     describe 'when fest_id is invalid' do
       let(:fest_id) { 9999 }
-      before do
-        if fest = Fest.find_by(id: fest_id)
-          fest.destroy
-        end
-      end
+      before { Fest.destroy_all(id: 9999) }
       it 'does NOT create theme and redirect to fests' do
         expect { post :create, fest_id: fest_id, theme: attrs }.not_to change(Theme, :count)
         expect(response).to redirect_to fests_path

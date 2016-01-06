@@ -12,6 +12,7 @@ source 'https://rubygems.org' do
   gem 'slim-rails'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'uglifier', '>= 1.3.0'
+  gem 'virtus'
 
   group :development do
     gem 'byebug', group: :test
