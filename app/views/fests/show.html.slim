@@ -14,4 +14,9 @@ ul
   = f.text_field :bravo
   = f.submit
 
+- if @fest.in_preparation?
+  - @kickoff ||= FestKickoff.new(fest: @fest)
+  = form_for @kickoff, url: fest_fest_kickoff_path(@fest) do |f|
+    = f.submit '開催！'
+
 p= link_to 'フェス一覧へ', fests_path
