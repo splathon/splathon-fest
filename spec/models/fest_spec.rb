@@ -4,6 +4,7 @@ RSpec.describe Fest do
   subject { FG.build(:fest) }
 
   it { is_expected.to be_valid }
+  it { is_expected.to respond_to(:in_preparation?, :opened?) }
 
   describe '#name' do
     it { is_expected.to be_invalid_on(:name).with(nil) }

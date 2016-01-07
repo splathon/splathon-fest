@@ -1,7 +1,7 @@
 h1 Fests#show
 p Find me in app/views/fests/show.html.slim
 
-h2= @fest
+h2= "#{@fest} - #{@fest.status_i18n}"
 
 ul
   - @fest.themes.each do |theme|
@@ -13,5 +13,10 @@ ul
   vs
   = f.text_field :bravo
   = f.submit
+
+- if @fest.in_preparation?
+  - @kickoff ||= FestKickoff.new(fest: @fest)
+  = form_for @kickoff, url: fest_fest_kickoff_path(@fest) do |f|
+    = f.submit '開催！'
 
 p= link_to 'フェス一覧へ', fests_path

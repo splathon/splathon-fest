@@ -1,0 +1,6 @@
+ja:
+  enums:
+    fest:
+      status:
+        in_preparation: 準備中
+        opened: 開催中

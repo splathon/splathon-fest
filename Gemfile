@@ -3,6 +3,7 @@ ruby '2.3.0'
 source 'https://rubygems.org' do
   gem 'coffee-rails', '~> 4.1.0'
   gem 'config'
+  gem 'enum_help'
   gem 'jbuilder', '~> 2.0'
   gem 'jquery-rails'
   gem 'mysql2', '>= 0.3.18', '< 0.5'
@@ -11,6 +12,7 @@ source 'https://rubygems.org' do
   gem 'slim-rails'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'uglifier', '>= 1.3.0'
+  gem 'virtus'
 
   group :development do
     gem 'byebug', group: :test
