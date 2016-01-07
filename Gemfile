@@ -34,6 +34,7 @@ source 'https://rubygems.org' do
     gem 'rspec-mocks', github: 'rspec/rspec-mocks', branch: 'master'
     gem 'rspec-rails', github: 'rspec/rspec-rails', branch: 'master'
     gem 'rspec-support', github: 'rspec/rspec-support', branch: 'master'
+    gem 'rspec_junit_formatter'
     gem 'simplecov', require: false
   end
 end
