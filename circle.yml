@@ -1,0 +1,13 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.3.0
+test:
+  override:
+    - ./bin/rubocop
+    - ./bin/rspec spec --format progress --format RspecJunitFormatter --out tmp/rspec.xml
+  post:
+    - mkdir $CIRCLE_TEST_REPORTS/junit/
+    - cp tmp/rspec.xml $CIRCLE_TEST_REPORTS/junit/
+    - cp -r coverage $CIRCLE_TEST_REPORTS/coverage || true
