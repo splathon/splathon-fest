@@ -1,0 +1,7 @@
+h1= @fest
+h2 signup
+
+- @player ||= Player.new
+= form_for @player, url: fest_playing_player_signup_path(@fest) do |f|
+  = f.text_field :name
+  = f.submit

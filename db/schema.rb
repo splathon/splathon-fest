@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106023541) do
+ActiveRecord::Schema.define(version: 20160108233125) do
 
   create_table "fests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name",                   null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0, null: false
+  end
+
+  create_table "players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer  "fest_id",               null: false
+    t.string   "name",       limit: 16, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["fest_id"], name: "index_players_on_fest_id", using: :btree
   end
 
   create_table "themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -29,5 +37,6 @@ ActiveRecord::Schema.define(version: 20160106023541) do
     t.index ["fest_id"], name: "index_themes_on_fest_id", using: :btree
   end
 
+  add_foreign_key "players", "fests"
   add_foreign_key "themes", "fests"
 end

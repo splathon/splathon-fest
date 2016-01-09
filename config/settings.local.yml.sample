@@ -4,3 +4,7 @@ db:
   port: 3306
   username: user
   password: pass
+redis:
+  cable:
+    host: local
+    port: 6379

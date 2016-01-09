@@ -19,4 +19,12 @@ ul
   = form_for @kickoff, url: fest_fest_kickoff_path(@fest) do |f|
     = f.submit '開催！'
 
+- if @fest.opened?
+  h3 参加者
+  ul.player-list
+    - @fest.players.each do |player|
+      li= player
+
 p= link_to 'フェス一覧へ', fests_path
+
+= javascript_include_tag 'cable'
