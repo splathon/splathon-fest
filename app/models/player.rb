@@ -8,6 +8,6 @@ class Player < ApplicationRecord
   end
 
   def notify_creation
-    ActionCable.server.broadcast "fest:#{fest.id}", self
+    ActionCable.server.broadcast "fest:#{fest.id}", event: 'player_signup', fest: self
   end
 end
