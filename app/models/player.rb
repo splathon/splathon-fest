@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-  belongs_to :fest
+  belongs_to :fest, required: true
   validates :name, presence: true, length: { maximum: 16 }
   after_create :notify_creation
 
