@@ -34,5 +34,10 @@ class ThemePublication
       return false unless valid?
       theme.update(status: 'opened')
     end
+    ActionCable.server.broadcast(
+      "fest:#{theme.fest.id}",
+      event: 'open_theme',
+      theme: theme,
+      fest: theme.fest)
   end
 end

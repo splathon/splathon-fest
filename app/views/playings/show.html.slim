@@ -1,1 +1,11 @@
 p= "YOU: #{@current_player}"
+
+div.scene.ready
+  p お題発表待ち・・・
+
+dev.scene.voting.hidden
+  p 投票中
+  p.alpha
+  p.bravo
+
+= javascript_include_tag 'cable'
