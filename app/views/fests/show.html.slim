@@ -21,8 +21,10 @@ ul
 
 - if @fest.opened?
   h3 参加者
-  ul
+  ul.player-list
     - @fest.players.each do |player|
       li= player
 
 p= link_to 'フェス一覧へ', fests_path
+
+= javascript_include_tag 'cable'

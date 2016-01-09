@@ -1,0 +1,3 @@
+redis:
+  cable:
+    db: 2

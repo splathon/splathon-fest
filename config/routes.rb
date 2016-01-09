@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       resource :player_signup, path: 'signup', only: %i(show create)
     end
   end
+
+  mount ActionCable.server => '/cable'
 end
