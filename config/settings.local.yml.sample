@@ -8,3 +8,4 @@ redis:
   cable:
     host: local
     port: 6379
+secret_key_base: xxxxxx
