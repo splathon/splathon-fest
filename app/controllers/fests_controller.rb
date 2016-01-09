@@ -15,6 +15,7 @@ class FestsController < ApplicationController
 
   def show
     @fest = Fest.find(params[:id])
+    gon.fest = @fest
   end
 
   private
