@@ -4,3 +4,7 @@ ja:
       status:
         in_preparation: 準備中
         opened: 開催中
+    theme:
+      status:
+        ready: 開催待ち
+        opened: 開催済み
