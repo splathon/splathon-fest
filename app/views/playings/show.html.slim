@@ -4,10 +4,11 @@ div.scene.ready
   p お題発表待ち・・・
 
 dev.scene.voting.hidden
-  p 投票中
-  p.alpha
-  ul.voters.alpha
-  p.bravo
-  ul.voters.bravo
+  div.side.alpha
+    p.vote-button
+    ul.voters
+  div.side.bravo
+    p.vote-button
+    ul.voters
 
 = javascript_include_tag 'cable'
