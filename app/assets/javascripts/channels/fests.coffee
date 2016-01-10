@@ -9,8 +9,8 @@ App.cable.subscriptions.create { channel: 'FestChannel', fest_id: gon.fest.id },
         $('.scene').addClass('hidden')
 
         scene = $('.scene.voting')
-        scene.find('p.alpha').text data.theme.alpha
-        scene.find('p.bravo').text data.theme.bravo
+        scene.find('.alpha .vote-button').text data.theme.alpha
+        scene.find('.bravo .vote-button').text data.theme.bravo
         @current_theme = data.theme.id
         @update_voters alpha: [], bravo: []
 
@@ -20,7 +20,7 @@ App.cable.subscriptions.create { channel: 'FestChannel', fest_id: gon.fest.id },
 
   connected: ->
     ['alpha', 'bravo'].forEach (side) =>
-      $("p.#{side}").on 'click', (e) =>
+      $(".#{side} .vote-button").on 'click', (e) =>
         @perform('vote', theme: @current_theme, side: side)
 
   current_theme: 0
@@ -28,7 +28,7 @@ App.cable.subscriptions.create { channel: 'FestChannel', fest_id: gon.fest.id },
   update_voters: (sides) ->
     scene = $('.scene.voting')
     ['alpha', 'bravo'].forEach (side) =>
-      list = scene.find("ul.voters.#{side}")
+      list = scene.find(".#{side} ul.voters")
       list.empty()
       sides[side].forEach (voter) =>
         li = $('<li></li>')
