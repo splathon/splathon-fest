@@ -1,11 +1,13 @@
 inherit_from: .rubocop_todo.yml
 
+Rails:
+  Enabled: true
+
 AllCops:
   Exclude:
     - vendor/**/*
     - db/**/*
     - bin/**
-  RunRailsCops: true
   DisplayCopNames: true
 
 Lint/AssignmentInCondition:
@@ -38,6 +40,9 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
+
 Style/NumericLiterals:
   MinDigits: 10
 
@@ -51,8 +56,11 @@ Style/RedundantSelf:
 Style/SignalException:
   Enabled: false
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 
-Style/TrailingComma:
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
   EnforcedStyleForMultiline: comma
