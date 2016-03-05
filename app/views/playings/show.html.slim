@@ -6,9 +6,15 @@ div.scene.ready
 dev.scene.voting.hidden
   div.side.alpha
     p.vote-button
+    p.vote-counter
+      span.count 0
+      | 票！
     ul.voters
   div.side.bravo
     p.vote-button
+    p.vote-counter
+      span.count 0
+      | 票！
     ul.voters
 
 = javascript_include_tag 'cable'
