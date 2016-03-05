@@ -12,17 +12,15 @@ class FestChannel < ApplicationCable::Channel
     ActionCable.server.broadcast(
       "fest:#{fest_id}",
       event: 'vote',
-      alpha: voters(theme_id, 'alpha'),
-      bravo: voters(theme_id, 'bravo'))
+      alpha: vote_count(theme_id, 'alpha'),
+      bravo: vote_count(theme_id, 'bravo'))
   end
 
   private
 
-  def voters(theme_id, side)
+  def vote_count(theme_id, side)
     Vote
       .where(theme_id: theme_id, side: side)
-      .order(:id)
-      .limit(4)
-      .map(&:player)
+      .count
   end
 end
