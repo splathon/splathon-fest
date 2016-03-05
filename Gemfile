@@ -9,7 +9,8 @@ source 'https://rubygems.org' do
   gem 'jquery-rails'
   gem 'mysql2'
   gem 'puma'
-  gem 'rails', '>= 5.0.0.beta1', '< 5.1'
+  gem 'rails', '5.0.0.beta3'
+  gem 'redis'
   gem 'sass-rails'
   gem 'slim-rails'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
