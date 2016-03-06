@@ -13,6 +13,7 @@ App.cable.subscriptions.create { channel: 'FestChannel', fest_id: gon.fest.id },
 
       when 'fix_theme'
         $('.scene').addClass('hidden')
+        @update_fighters(data)
         $('.scene.fixed').removeClass('hidden')
 
       when 'vote'
@@ -37,3 +38,13 @@ App.cable.subscriptions.create { channel: 'FestChannel', fest_id: gon.fest.id },
     ['alpha', 'bravo'].forEach (side) =>
       counter = scene.find(".#{side} .vote-counter .count")
       counter.text(sides[side])
+
+  update_fighters: (data) ->
+    scene = $('.scene.fixed')
+    ['alpha', 'bravo'].forEach (side) =>
+      ul = scene.find(".#{side} ul.fighters")
+      ul.empty()
+      data[side].forEach (fighter) =>
+        li = $('<li></li>')
+        li.text(fighter)
+        ul.append(li)

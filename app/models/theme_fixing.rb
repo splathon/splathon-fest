@@ -4,6 +4,8 @@ class ThemeFixing
 
   attribute :theme_id, Integer
   attribute :theme, Theme
+  attribute :alpha, Array[Vote]
+  attribute :bravo, Array[Vote]
 
   validates :theme_id, type: { is: Integer }
   validates :theme, type: { is: Theme }
@@ -33,9 +35,29 @@ class ThemeFixing
       theme.try(:lock!)
       return false unless valid?
       theme.update(status: 'fixed')
+      select_both_votes(theme)
     end
     ActionCable.server.broadcast(
       "fest:#{theme.fest.id}",
-      event: 'fix_theme')
+      event: 'fix_theme',
+      alpha: alpha.map(&:player).map(&:name),
+      bravo: bravo.map(&:player).map(&:name))
+  end
+
+  private
+
+  def select_both_votes(theme)
+    self.alpha = select_votes(theme, :alpha)
+    self.bravo = select_votes(theme, :bravo)
+  end
+
+  def select_votes(theme, side)
+    theme
+      .votes
+      .where(side: side)
+      .to_a
+      .shuffle
+      .take(4)
+      .each { |v| v.update(status: 'selected') }
   end
 end
