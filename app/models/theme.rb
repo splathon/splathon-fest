@@ -1,6 +1,6 @@
 class Theme < ApplicationRecord
   belongs_to :fest, required: true
-  enum status: { ready: 0, opened: 1 }
+  enum status: { ready: 0, opened: 1, fixed: 2 }
 
   %i(alpha bravo).each do |team|
     validates team, presence: true, length: { maximum: 32 }

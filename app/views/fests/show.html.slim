@@ -11,6 +11,10 @@ ul
         - @theme_publication ||= ThemePublication.new(theme: theme)
         = form_for @theme_publication, url: fest_theme_theme_publication_path(@fest, theme) do |f|
           = f.submit '開始！'
+      - if theme.opened?
+        - @theme_fixing ||= ThemeFixing.new(theme: theme)
+        = form_for @theme_fixing, url: fest_theme_theme_fixing_path(@fest, theme) do |f|
+          = f.submit '投票締切'
 
 - @theme ||= Theme.new(fest: @fest)
 = form_for @theme, url: fest_themes_path(@fest) do |f|

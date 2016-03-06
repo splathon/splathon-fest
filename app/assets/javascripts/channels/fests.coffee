@@ -5,16 +5,16 @@ App.cable.subscriptions.create { channel: 'FestChannel', fest_id: gon.fest.id },
         li = $('<li></li>')
         li.text(data.fest.name)
         $('.player-list').append(li)
+
       when 'open_theme'
         $('.scene').addClass('hidden')
+        @update_theme(data.theme)
+        $('.scene.voting').removeClass('hidden')
 
-        scene = $('.scene.voting')
-        scene.find('.alpha .vote-button').text data.theme.alpha
-        scene.find('.bravo .vote-button').text data.theme.bravo
-        @current_theme = data.theme.id
-        @update_vote_count alpha: 0, bravo: 0
+      when 'fix_theme'
+        $('.scene').addClass('hidden')
+        $('.scene.fixed').removeClass('hidden')
 
-        scene.removeClass('hidden')
       when 'vote'
         @update_vote_count alpha: data.alpha, bravo: data.bravo
 
@@ -25,8 +25,15 @@ App.cable.subscriptions.create { channel: 'FestChannel', fest_id: gon.fest.id },
 
   current_theme: 0
 
+  update_theme: (theme) ->
+    scene = $('.scene.voting, .scene.fixed')
+    scene.find('.alpha .vote-button').text theme.alpha
+    scene.find('.bravo .vote-button').text theme.bravo
+    @current_theme = theme.id
+    @update_vote_count alpha: 0, bravo: 0
+
   update_vote_count: (sides) ->
-    scene = $('.scene.voting')
+    scene = $('.scene.voting, .scene.fixed')
     ['alpha', 'bravo'].forEach (side) =>
       counter = scene.find(".#{side} .vote-counter .count")
       counter.text(sides[side])
