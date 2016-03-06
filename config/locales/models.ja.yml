@@ -8,3 +8,4 @@ ja:
       status:
         ready: 開催待ち
         opened: 開催済み
+        fixed: 締切済み
