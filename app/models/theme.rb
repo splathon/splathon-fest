@@ -1,5 +1,7 @@
 class Theme < ApplicationRecord
   belongs_to :fest, required: true
+  has_many :votes
+
   enum status: { ready: 0, opened: 1, fixed: 2 }
 
   %i(alpha bravo).each do |team|

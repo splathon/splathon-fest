@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109114423) do
+ActiveRecord::Schema.define(version: 20160306121631) do
 
   create_table "fests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name",                   null: false
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20160109114423) do
     t.string   "name",       limit: 16, null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["fest_id"], name: "index_players_on_fest_id", using: :btree
   end
+
+  add_index "players", ["fest_id"], name: "index_players_on_fest_id", using: :btree
 
   create_table "themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "fest_id",                           null: false
@@ -35,19 +36,22 @@ ActiveRecord::Schema.define(version: 20160109114423) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "status",                default: 0, null: false
-    t.index ["fest_id"], name: "index_themes_on_fest_id", using: :btree
   end
 
+  add_index "themes", ["fest_id"], name: "index_themes_on_fest_id", using: :btree
+
   create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.integer  "theme_id",   null: false
-    t.integer  "player_id",  null: false
-    t.integer  "side",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_votes_on_player_id", using: :btree
-    t.index ["theme_id", "player_id"], name: "index_votes_on_theme_id_and_player_id", unique: true, using: :btree
-    t.index ["theme_id"], name: "index_votes_on_theme_id", using: :btree
+    t.integer  "theme_id",               null: false
+    t.integer  "player_id",              null: false
+    t.integer  "side",                   null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0, null: false
   end
+
+  add_index "votes", ["player_id"], name: "index_votes_on_player_id", using: :btree
+  add_index "votes", ["theme_id", "player_id"], name: "index_votes_on_theme_id_and_player_id", unique: true, using: :btree
+  add_index "votes", ["theme_id"], name: "index_votes_on_theme_id", using: :btree
 
   add_foreign_key "players", "fests"
   add_foreign_key "themes", "fests"
