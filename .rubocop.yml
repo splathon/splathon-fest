@@ -1,0 +1,12 @@
+inherit_gem:
+  meowcop:
+    - config/rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.4
+  TargetRailsVersion: 5.1
+  Exclude:
+    - 'bin/*'
+
+Rails:
+  Enabled: true
