@@ -1,0 +1,42 @@
+version: 2
+
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.4.3-node
+        environment:
+          RAILS_ENV: test
+      - image: mysql:5.6
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+
+    steps:
+      - checkout
+
+      # Setup gems
+      - restore_cache:
+          keys:
+            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-{{ arch }}-{{ .Branch }}
+            - gem-cache
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # Wait services
+      - run: dockerize -wait tcp://localhost:3306 -timeout 1m
+
+      # Setup DB
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
+
+      # Run tests
+      - run: bundle exec rspec spec
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - test
