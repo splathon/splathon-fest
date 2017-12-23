@@ -1,0 +1,9 @@
+DEFAULT_OPTIONS = 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin'
+
+def load_schema(table_name)
+  path = File.expand_path("./schemas/#{table_name}.rb", __dir__)
+  code = File.read(path)
+  instance_eval(code, path)
+end
+
+load_schema 'fests'

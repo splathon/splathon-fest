@@ -15,6 +15,7 @@ source 'https://rubygems.org' do
     gem 'listen'
     gem 'rubocop', require: false
     gem 'meowcop', require: false
+    gem 'ridgepole'
     gem 'spring'
     gem 'spring-watcher-listen'
     gem 'web-console'

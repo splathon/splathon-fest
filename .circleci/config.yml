@@ -30,7 +30,7 @@ jobs:
 
       # Setup DB
       - run: bundle exec rails db:create
-      - run: bundle exec rails db:schema:load
+      - run: bundle exec ridgepole -E test -c config/database.yml --apply -f db/Schemafile
 
       # Run tests
       - run: bundle exec rspec spec
